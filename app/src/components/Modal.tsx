@@ -1,24 +1,23 @@
-// import React from 'react';
-// import { Link } from "react-router-dom";
-// export interface modal {
-//   dialog: boolean;
-//   handledel:()=> void
-// }
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-// const Modal:React.FC<modal> = (dialog ,handledel, ) => {
-//   return (
-//     <dialog open={dialog}>
-//           <article>
-//             <h3>Confirm your action!</h3>
-//             <p>Are you sure you want to</p>
-//             <footer>
-//               <button className="" onClick={() => handledel}>
-//                 <Link to="/">ok</Link>
-//               </button>
-//             </footer>
-//           </article>
-//         </dialog>
-//   );
-// };
+export interface modal {
+  dialog: boolean;
+}
 
-// export default Modal;
+const Modal: React.FC<modal> = ({ dialog }) => {
+  const navigate = useNavigate();
+
+  return (
+    <dialog open={dialog}>
+      <article>
+        <p>Api request sucess</p>
+        <footer>
+          <button onClick={() => navigate("/")}>ok</button>
+        </footer>
+      </article>
+    </dialog>
+  );
+};
+
+export default Modal;

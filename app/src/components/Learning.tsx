@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: "http://localhost:5476",
   //   timeout: 1000,
 });
@@ -22,32 +22,22 @@ export const updateMovie = (payload: IMovieAdd, movieId: number) => {
   return axiosInstance.put(`/movies/${movieId}`, payload);
 };
 
-export const deleteMovie = (movieId: number) => {
+export const deleteMovie = (movieId: string) => {
   return axiosInstance.delete(`/movies/${movieId}`);
 };
-// const deleteTodo = async (id: number): Promise<void> => {
-//   await axios.delete(`http://localhost:5476/todos/${id}`);
-//   console.log(`${id}`);
 
-//   setTodos(todos.filter((todo) => todo.id !== id));
+export const del = (id: number) => {
+  return axiosInstance.delete(`/movies/${id}`);
+};
+
+// const handleSave = () => {
+//   axios
+//     .put(`http://localhost:5476/movies/${id}`, todo)
+//     .then((response) => {
+//       console.log("Todo updated:", response.data);
+//       window.location.href = "/";
+//     })
+//     .catch((error) => {
+//       console.error("Error updating :", error);
+//     });
 // };
-// const handledel = () => {
-//   setdialog(false);
-// };
-{
-  /* <button className="" onClick={() => handledel}>
-                <Link to="/">ok</Link>
-              </button> */
-}
-// async function getMoviesFromAPI() {
-//     setIsLoading(true);
-//     try {
-//       const response = await deleteMovie();
-//       setMovies(response.data);
-//     } catch (error) {
-//       console.log(error);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   }
-// getMoviesFromAPI();
