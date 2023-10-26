@@ -1,47 +1,50 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { getMovies } from "./Learning";
 
 import { Todo } from "../types";
 
 const TodoList: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
 
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [dialog, setdialog] = useState(false);
 
   useEffect(() => {
-    axios
-      .get<Todo[]>(`http://localhost:5476/movies`)
-      .then((response) => {
+    async function getMoviesFromAPI() {
+      try {
+        const response = await getMovies();
         setTodos(response.data);
-      })
-      .catch((error) => {
-        console.error("Error :", error);
-      });
+      } catch (error) {
+        console.log(error);
+      } finally {
+      }
+    }
+    getMoviesFromAPI();
   }, []);
-  const handledelete = () => {
+
+  const handledelete = (id: number) => {
     axios
       .delete<Todo[]>(`http://localhost:5476/movies/${id}`)
       .then((response) => {
-        console.log("Todo updated:", response.data);
-        window.location.href = "/";
+        console.log("Todo deleted:", response.data);
         console.log(`${id}`);
-        // setApiSuccess(true);
+        setdialog(true);
       })
       .catch((error) => {
         console.error("Error updating :", error);
       });
-  };
-  const deleteTodo = async (id: number): Promise<void> => {
-    await axios.delete(`http://localhost:5476/todos/${id}`);
-    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
       <main className="container">
         <h1>Movies</h1>
+        <a href="/add" role="button">
+          <i className="fa fa-plus  kkk"> </i>
+        </a>
         <div className="grid">
           {todos.map((todo) => (
             <div>
@@ -55,16 +58,28 @@ const TodoList: React.FC = () => {
                       <i className="fa fa-edit"> </i>
                     </Link>
                   </button>
-                  <button className="delete-btn" onClick={handledelete}>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handledelete(todo.id)}
+                  >
                     <i className="fa fa-trash-o"></i>
                   </button>
-                  <button onClick={() => deleteTodo(todo.id)}>Delete</button>
                 </div>
               </article>
             </div>
           ))}
         </div>
-        <Link to="/add">Add movie</Link>
+
+        <dialog open={dialog}>
+          <article>
+            <p>Api request sucess</p>
+            <footer>
+              <a href="/" role="button">
+                ok
+              </a>
+            </footer>
+          </article>
+        </dialog>
       </main>
     </div>
   );

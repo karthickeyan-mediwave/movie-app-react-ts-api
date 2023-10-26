@@ -1,24 +1,24 @@
-import React from 'react';
+// import React from 'react';
+// import { Link } from "react-router-dom";
+// export interface modal {
+//   dialog: boolean;
+//   handledel:()=> void
+// }
 
-interface ModalProps {
-  isOpen: boolean;
-  message: string;
+// const Modal:React.FC<modal> = (dialog ,handledel, ) => {
+//   return (
+//     <dialog open={dialog}>
+//           <article>
+//             <h3>Confirm your action!</h3>
+//             <p>Are you sure you want to</p>
+//             <footer>
+//               <button className="" onClick={() => handledel}>
+//                 <Link to="/">ok</Link>
+//               </button>
+//             </footer>
+//           </article>
+//         </dialog>
+//   );
+// };
 
-  onClose: () => void;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose,message }) => {
-  return (
-    <dialog className={`modal ${isOpen ? 'open' : ''}`}>
-      <article>
-        <header>
-          <a href="#close" aria-label="Close" className="close" onClick={onClose}></a>
-          Success
-        </header>
-        <p>{message}</p>
-      </article>
-    </dialog>
-  );
-};
-
-export default Modal;
+// export default Modal;
