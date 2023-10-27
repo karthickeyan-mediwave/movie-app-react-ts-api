@@ -28,8 +28,8 @@ const MovieList: React.FC = () => {
       await deleteMovie(id);
       console.log("movie deleted:", id);
       setDialog(true);
-    } catch (error) {
-      console.error("Error deleting movie:", error);
+    } catch (error: any) {
+      console.error("Error deleting movie:", error.message);
     }
   };
 

@@ -18,6 +18,7 @@ const EditMovie: React.FC = () => {
         .then((response) => {
           setMovieTitle(response.title);
           setInitialMovie(response);
+          console.log(response);
         })
         .catch((error) => {
           console.error("Error fetching movie data:", error);
