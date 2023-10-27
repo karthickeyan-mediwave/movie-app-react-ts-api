@@ -1,8 +1,3 @@
-// const Layout = () => {
-//   return <main className="container"></main>;
-// };
-
-// export default Layout;
 import { useEffect } from "react";
 
 const Layout = (props: any) => {
