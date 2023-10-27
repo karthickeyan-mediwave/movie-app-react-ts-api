@@ -41,3 +41,6 @@ export const del = (id: number) => {
 //       console.error("Error updating :", error);
 //     });
 // };
+
+// YourComponent.tsx
+
