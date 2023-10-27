@@ -12,6 +12,10 @@
 
 - https://ethan-dev.com/post/building-a-todo-crud-app-with-react-typescript-vite
 
+#### for button disable
+
+- https://stackoverflow.com/questions/65668008/disabling-submit-button-when-submitting-form-in-react-not-working-as-expected-wh
+
 #### To run
 
 - cd app

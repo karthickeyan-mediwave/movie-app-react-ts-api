@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Todo1 } from "../types";
 
@@ -8,7 +7,10 @@ interface MovieFormProps {
 }
 
 const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
-  const [movie, setMovie] = useState<Todo1>(initialMovie || { title: "", year: 0 });
+  const [movie, setMovie] = useState<Todo1>(
+    initialMovie || { title: "", year: 0 }
+  );
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMovie({ ...movie, title: e.target.value });
@@ -20,7 +22,10 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setButtonDisabled(true);
+
     onSubmit(movie);
+    console.log(movie);
   };
 
   return (
@@ -38,7 +43,7 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
           onChange={handleYearChange}
           placeholder="Year"
         />
-        <button type="submit">
+        <button type="submit" disabled={buttonDisabled}>
           {initialMovie ? "Update" : "Add movie"}
         </button>
       </div>

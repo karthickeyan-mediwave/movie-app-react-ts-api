@@ -44,3 +44,24 @@ export const del = (id: number) => {
 
 // YourComponent.tsx
 
+// const [buttonDisabled, setButtonDisabled] = useState(false);
+
+//     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+//         event.preventDefault();
+//         setButtonDisabled(true);
+
+//         const response = await fetch(
+//             "http://localhost:5000/....",
+//             {
+//                 method: "POST",
+//                 body: JSON.stringify(state),
+//             },
+//         );
+//         setButtonDisabled(false);
+
+//         const responseJson = await response.text();
+
+//     };
+
+// // Button
+// <button disabled={buttonDisabled} type="submit">Submit form</button>
