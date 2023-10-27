@@ -26,10 +26,10 @@ const MovieList: React.FC = () => {
   const handleDelete = async (id: number) => {
     try {
       await deleteMovie(id);
-      console.log("Todo deleted:", id);
+      console.log("movie deleted:", id);
       setDialog(true);
     } catch (error) {
-      console.error("Error deleting todo:", error);
+      console.error("Error deleting movie:", error);
     }
   };
 

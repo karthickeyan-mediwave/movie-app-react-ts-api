@@ -22,7 +22,6 @@ const Modal: React.FC<ModalProps> = ({ dialog, setDialog }) => {
         <footer>
           {<MovieList /> ? (
             <>
-              {" "}
               <button onClick={handleCancel}>ok</button>.
             </>
           ) : (
