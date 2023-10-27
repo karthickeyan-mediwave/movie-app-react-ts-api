@@ -8,14 +8,14 @@ import Modal from "./Modal";
 
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [movie, setmovie] = useState<Todo[]>([]);
   const [dialog, setDialog] = useState(false);
 
   useEffect(() => {
     async function getMoviesFromAPI() {
       try {
         const response = await getMovies();
-        setTodos(response);
+        setmovie(response);
       } catch (error) {
         console.log(error);
       }
@@ -41,21 +41,21 @@ const MovieList: React.FC = () => {
       </button>
 
       <div className="grid">
-        {todos.map((todo) => (
-          <div key={todo.id}>
+        {movie.map((mv) => (
+          <div key={mv.id}>
             <article>
-              <h2>movie- {todo.title}</h2>
-              <h3> Year: {todo.year}</h3>
+              <h2>movie- {mv.title}</h2>
+              <h3> Year: {mv.year}</h3>
 
               <div className="btn-wrap">
                 <button className="edit-btn">
-                  <Link to={`/edit/${todo.id}`}>
+                  <Link to={`/edit/${mv.id}`}>
                     <i className="fa fa-edit"> </i>
                   </Link>
                 </button>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(todo.id)}
+                  onClick={() => handleDelete(mv.id)}
                 >
                   <i className="fa fa-trash-o"></i>
                 </button>
