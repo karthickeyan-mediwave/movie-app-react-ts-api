@@ -1,19 +1,35 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import MovieList from "./MovieList";
 
-export interface modal {
+interface ModalProps {
   dialog: boolean;
+  setDialog: (value: boolean) => void;
 }
 
-const Modal: React.FC<modal> = ({ dialog }) => {
+const Modal: React.FC<ModalProps> = ({ dialog, setDialog }) => {
   const navigate = useNavigate();
+
+  const handleCancel = () => {
+    setDialog(false);
+    window.location.href = "/";
+  };
 
   return (
     <dialog open={dialog}>
       <article>
-        <p>Api request sucess</p>
+        <p>API request success</p>
         <footer>
-          <button onClick={() => navigate("/")}>ok</button>
+          {<MovieList /> ? (
+            <>
+              {" "}
+              <button onClick={handleCancel}>ok</button>.
+            </>
+          ) : (
+            <>
+              <button onClick={() => navigate("/")}>OK</button>
+            </>
+          )}
         </footer>
       </article>
     </dialog>
