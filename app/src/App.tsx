@@ -1,15 +1,15 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import TodoList from "./components/TodoList";
-import EditTodo from "./components/EditTodo";
-import AddTodo from "./components/AddTodo";
+import MovieList from "./components/MovieList";
+import EditMovie from "./components/EditMovie";
+import AddMovie from "./components/AddMovie";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TodoList />} />
-        <Route path="/add" element={<AddTodo />} />
-        <Route path="/edit/:id" element={<EditTodo />} />
+        <Route path="/" element={<MovieList />} />
+        <Route path="/add" element={<AddMovie />} />
+        <Route path="/edit/:id" element={<EditMovie />} />
       </Routes>
     </BrowserRouter>
   );
