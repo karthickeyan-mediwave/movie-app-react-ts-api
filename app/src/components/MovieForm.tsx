@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Todo1 } from "../types";
+import { Movie1 } from "../types";
 
 interface MovieFormProps {
-  onSubmit: (movie: Todo1) => void;
-  initialMovie?: Todo1;
+  onSubmit: (movie: Movie1) => void;
+  initialMovie?: Movie1;
 }
 
 const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
-  const [movie, setMovie] = useState<Todo1>(
+  const [movie, setMovie] = useState<Movie1>(
     initialMovie || { title: "", year: 0 }
   );
   const [buttonDisabled, setButtonDisabled] = useState(false);

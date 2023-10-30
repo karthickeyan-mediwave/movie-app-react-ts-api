@@ -65,3 +65,19 @@ export const del = (id: number) => {
 
 // // Button
 // <button disabled={buttonDisabled} type="submit">Submit form</button>
+
+// function Example() {
+//   const [data, dataSet] = useState<any>(null)
+
+//   useEffect(() => {
+//     async function fetchMyAPI() {
+//       let response = await fetch('api/data')
+//       response = await response.json()
+//       dataSet(response)
+//     }
+
+//     fetchMyAPI()
+//   }, [])
+
+//   return <div>{JSON.stringify(data)}</div>
+// }

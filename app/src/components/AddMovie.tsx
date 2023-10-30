@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "./Layout";
 import MovieForm from "./MovieForm";
-import { Todo1 } from "../types";
+import { Movie1 } from "../types";
 import { createMovie } from "./apiService";
 import Modal from "./Modal";
 
@@ -9,7 +9,7 @@ const AddMovie: React.FC = () => {
   const [dialog, setDialog] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleMovieAdded = async (movie: Todo1) => {
+  const handleMovieAdded = async (movie: Movie1) => {
     try {
       await createMovie(movie);
       console.log("Movie created:", movie);
@@ -26,7 +26,7 @@ const AddMovie: React.FC = () => {
           <article>
             <h3>{error}</h3>
             <footer>
-              <a href="/" role="button" className="secondary">
+              <a href="/add" role="button" className="secondary">
                 Cancel
               </a>
             </footer>

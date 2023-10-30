@@ -1,9 +1,9 @@
-export interface Todo {
+export interface Movie {
   id: number;
   title: string;
   year: number;
 }
-export interface Todo1 {
+export interface Movie1 {
   title: string;
   year: number;
 }

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Todo } from "../types";
+import { Movie } from "../types";
 import Layout from "./Layout";
 import { deleteMovie, getMovies } from "./apiService";
 import Modal from "./Modal";
 
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
-  const [movie, setmovie] = useState<Todo[]>([]);
+  const [movie, setmovie] = useState<Movie[]>([]);
   const [dialog, setDialog] = useState(false);
 
   useEffect(() => {
