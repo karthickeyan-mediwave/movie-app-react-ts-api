@@ -3,14 +3,14 @@ import { lazy, Suspense } from "react";
 const AddMovie = lazy(() => import("./components/AddMovie"));
 const EditMovie = lazy(() => import("./components/EditMovie"));
 const MovieList = lazy(() => import("./components/MovieList"));
-
-function Loading() {
-  return <p className="loading">Loading ...</p>;
+import Loading from "./components/loader/Loading";
+function Load() {
+  return <Loading></Loading>;
 }
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Load />}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MovieList />} />

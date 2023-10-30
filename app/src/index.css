@@ -22,19 +22,28 @@ h1 {
   display: flex;
   justify-content: end;
 }
-.fa {
+/* .fa {
     font-size: 25px;
-}
+} */
 .edit-title,
 .add-title {
   text-align: center;
 }
 .edit-form,
 .add-form {
-  width: 50%;
+  /* width: 50%; */
   margin: 0 auto;
 }
 .home-add-btn {
-  width: 10%;
-  height: fit-content;
+  width: 20%;
+  /* height: fit-content; */
+}
+
+svg {
+  width: 30px;
+  height: 30px;
+  margin: 20px;
+  display: inline-block;
+  background-color: #3498db;
+  color: black !important;
 }

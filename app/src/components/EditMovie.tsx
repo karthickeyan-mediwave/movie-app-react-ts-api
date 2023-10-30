@@ -5,8 +5,11 @@ import Modal from "./Modal";
 import { Movie1 } from "../types";
 import { updateMovie, getMovieById } from "./apiService";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EditMovie: React.FC = () => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [movieTitle, setMovieTitle] = useState("");
   const [dialog, setDialog] = useState(false);
@@ -47,6 +50,9 @@ const EditMovie: React.FC = () => {
         <MovieForm onSubmit={handleMovieUpdated} initialMovie={initialMovie} />
       )}
       <Modal dialog={dialog} setDialog={setDialog} />
+      <button onClick={() => navigate("/")} className="home-add-btn">
+        Back
+      </button>
     </Layout>
   );
 };

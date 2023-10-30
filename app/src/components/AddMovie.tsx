@@ -4,8 +4,11 @@ import MovieForm from "./MovieForm";
 import { Movie1 } from "../types";
 import { createMovie } from "./apiService";
 import Modal from "./Modal";
+import { useNavigate } from "react-router-dom";
 
 const AddMovie: React.FC = () => {
+  const navigate = useNavigate();
+
   const [dialog, setDialog] = useState(false);
   const [error, setError] = useState(null);
 
@@ -40,6 +43,9 @@ const AddMovie: React.FC = () => {
       <h2 className="add-title">Add movie</h2>
       <MovieForm onSubmit={handleMovieAdded} />
       <Modal dialog={dialog} setDialog={setDialog} />
+      <button onClick={() => navigate("/")} className="home-add-btn">
+        Back
+      </button>
     </Layout>
   );
 };

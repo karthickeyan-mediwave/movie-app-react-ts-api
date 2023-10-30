@@ -81,3 +81,182 @@ export const del = (id: number) => {
 
 //   return <div>{JSON.stringify(data)}</div>
 // }
+// import "./styles.css";
+
+// import { useState } from "react";
+// export default function App() {
+//   const [show, setShow] = useState(true);
+//   return (
+//     <div className="App">
+//       <button onClick={() => setShow(!show)}>
+//         {show ? "Hide" : "Show"} component
+//       </button>
+//       {show ? <Box /> : null}
+//     </div>
+//   );
+// }
+
+// function Box() {
+//   return <div className="box"></div>;
+// }
+{
+  /* <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+ <path fill="#fff" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+  c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#fff" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+  c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="1s" 
+         from="0 50 50"
+         to="-360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#fff" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+  L82,35.7z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+</svg> */
+}
+{
+  /* <dialog>
+<article>
+  <p>API request success</p>
+  <footer>
+     <a href="/" role="button" className="secondary"> 
+  ok
+</a> 
+    <button onClick={() => navigate("/")}>ok</button>
+    <a href="/" role="button" className="secondary">
+  ok
+</a> 
+    <button>cancel </button>
+  </footer>
+</article>
+</dialog>
+<button
+className="contrast"
+data-target="modal-example"
+onclick="toggleModal(event)'
+onClick={() => "toggleModal(event)"}
+>
+Launch demo modal
+</button>
+<button onClick={() => navigate("/")}>ok</button> */
+}
+
+/// modal
+
+/*
+ * Modal
+ *
+ * Pico.css - https://picocss.com
+ * Copyright 2019-2023 - Licensed under MIT
+ */
+
+// Config
+// const isOpenClass = "modal-is-open";
+// const openingClass = "modal-is-opening";
+// const closingClass = "modal-is-closing";
+// const animationDuration = 400; // ms
+// let visibleModal = null;
+
+// Toggle modal
+// const toggleModal = (event) => {
+//   event.preventDefault();
+//   const modal = document.getElementById(event.currentTarget.getAttribute("data-target"));
+//   typeof modal != "undefined" && modal != null && isModalOpen(modal)
+//     ? closeModal(modal)
+//     : openModal(modal);
+// };
+
+// Is modal open
+// const isModalOpen = (modal) => {
+//   return modal.hasAttribute("open") && modal.getAttribute("open") != "false" ? true : false;
+// };
+
+// Open modal
+// const openModal = (modal) => {
+//   if (isScrollbarVisible()) {
+//     document.documentElement.style.setProperty("--scrollbar-width", `${getScrollbarWidth()}px`);
+//   }
+//   document.documentElement.classList.add(isOpenClass, openingClass);
+//   setTimeout(() => {
+//     visibleModal = modal;
+//     document.documentElement.classList.remove(openingClass);
+//   }, animationDuration);
+//   modal.setAttribute("open", true);
+// };
+
+// Close modal
+// const closeModal = (modal) => {
+//   visibleModal = null;
+//   document.documentElement.classList.add(closingClass);
+//   setTimeout(() => {
+//     document.documentElement.classList.remove(closingClass, isOpenClass);
+//     document.documentElement.style.removeProperty("--scrollbar-width");
+//     modal.removeAttribute("open");
+//   }, animationDuration);
+// };
+
+// Close with a click outside
+// document.addEventListener("click", (event) => {
+//   if (visibleModal != null) {
+//     const modalContent = visibleModal.querySelector("article");
+//     const isClickInside = modalContent.contains(event.target);
+//     !isClickInside && closeModal(visibleModal);
+//   }
+// });
+
+// Close with Esc key
+// document.addEventListener("keydown", (event) => {
+//   if (event.key === "Escape" && visibleModal != null) {
+//     closeModal(visibleModal);
+//   }
+// });
+
+// Get scrollbar width
+// const getScrollbarWidth = () => {
+//   // Creating invisible container
+//   const outer = document.createElement("div");
+//   outer.style.visibility = "hidden";
+//   outer.style.overflow = "scroll"; // forcing scrollbar to appear
+//   outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+//   document.body.appendChild(outer);
+
+// Creating inner element and placing it in the container
+// const inner = document.createElement("div");
+// outer.appendChild(inner);
+
+// Calculating difference between container's full width and the child width
+// const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
+// Removing temporary elements from the DOM
+// outer.parentNode.removeChild(outer);
+
+// return scrollbarWidth;
+// };
+
+// Is scrollbar visible
+// const isScrollbarVisible = () => {
+//   return document.body.scrollHeight > screen.height;
+// };

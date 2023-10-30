@@ -14,7 +14,7 @@ export const getMovies = async (): Promise<Movie[]> => {
     return response.data;
   };
 
-export const createMovie = async (movie: Movie1): Promise<Movie1> => {
+export const createMovie = async (movie: Movie1 ): Promise<Movie1> => {
     const response: AxiosResponse<Movie1> = await apiService.post("/movies", movie);
     return response.data;
   };
@@ -30,6 +30,4 @@ export const getMovieById = async (id: string) => {
       const response = await axios.get(`${API_BASE_URL}/movies/${id}`);
       return response.data;
     }
-    // export const getMovie = async (id: number): Promise<void> => {
-    //   await apiService.get(`/movies/${id}`);
-    // };
+ 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Movie1 } from "../types";
+import Loading from "./loader/Loading";
 
 interface MovieFormProps {
   onSubmit: (movie: Movie1) => void;
@@ -11,6 +12,8 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
     initialMovie || { title: "", year: 0 }
   );
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMovie({ ...movie, title: e.target.value });
@@ -23,7 +26,8 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setButtonDisabled(true);
-
+    setShow(show);
+    setIsLoading(true);
     onSubmit(movie);
     console.log(movie);
   };
@@ -43,9 +47,17 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
           onChange={handleYearChange}
           placeholder="Year"
         />
-        <button type="submit" disabled={buttonDisabled}>
-          {initialMovie ? "Update" : "Add movie"}
-        </button>
+        <div>
+          <button type="submit" disabled={buttonDisabled}>
+            {!isLoading ? (
+              <> {initialMovie ? "Update" : "Add movie"}</>
+            ) : (
+              <>
+                <Loading></Loading>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );
