@@ -22,17 +22,8 @@ const Modal: React.FC<ModalProps> = ({ dialog, setDialog }) => {
         <article>
           <p>API request success</p>
           <footer>
-            <button onClick={() => navigate("/")}>ok</button>
-            <button onClick={handlecancel}>cancel </button>
-          </footer>
-        </article>
-      </dialog>
-      <dialog>
-        <article>
-          <p>API request success</p>
-          <footer>
-            <button onClick={() => navigate("/")}>ok</button>
-            <button onClick={handlecancel}>cancel </button>
+            {/* <button onClick={() => navigate("/")}>ok</button> */}
+            <button onClick={handlecancel}>ok </button>
           </footer>
         </article>
       </dialog>
