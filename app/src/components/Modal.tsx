@@ -10,9 +10,6 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ dialog, setDialog }) => {
   const navigate = useNavigate();
   function handlecancel() {
-    // close = { dialog };
-    // navigate("/");
-    // close(false);
     setDialog(false);
     navigate("/");
   }
@@ -22,7 +19,6 @@ const Modal: React.FC<ModalProps> = ({ dialog, setDialog }) => {
         <article>
           <p>API request success</p>
           <footer>
-            {/* <button onClick={() => navigate("/")}>ok</button> */}
             <button onClick={handlecancel}>ok </button>
           </footer>
         </article>

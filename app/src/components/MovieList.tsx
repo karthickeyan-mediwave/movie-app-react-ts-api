@@ -6,6 +6,8 @@ import Layout from "./Layout";
 import { deleteMovie, getMovies } from "./apiService";
 import Modal from "./Modal";
 import Loading from "./loader/Loading";
+import { useModal } from "./Checkmodal";
+import Modal1 from "./Checkmodal";
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -13,6 +15,8 @@ const MovieList: React.FC = () => {
   const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMovieId, setLoadingMovieId] = useState<number | null>(null);
+  const { isOpen, toggle } = useModal();
+
   useEffect(() => {
     async function getMoviesFromAPI() {
       setIsLoading(true);
@@ -34,8 +38,8 @@ const MovieList: React.FC = () => {
       await deleteMovie(id);
       console.log("movie deleted:", id);
       // setRefresh(true);
-
-      setDialog(true);
+      toggle();
+      // setDialog(true);
     } catch (error: any) {
       console.error("Error deleting movie:", error.message);
     } finally {
@@ -43,6 +47,13 @@ const MovieList: React.FC = () => {
       setRefresh(true);
     }
   };
+  function handlecancel() {
+    setDialog(false);
+    setRefresh(true);
+    toggle();
+    navigate("/");
+  }
+
   return (
     <Layout title="movies">
       <h1>Movies</h1>
@@ -90,6 +101,12 @@ const MovieList: React.FC = () => {
             ))}
           </div>
           <Modal dialog={dialog} setDialog={setDialog} />
+          <Modal1 isOpen={isOpen} toggle={toggle}>
+            <p> movie deleted successfully</p>
+            <footer>
+              <button onClick={handlecancel}>ok </button>
+            </footer>
+          </Modal1>
         </>
       )}
     </Layout>

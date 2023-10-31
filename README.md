@@ -32,6 +32,10 @@
 
 - https://codepen.io/nikhil8krishnan/pen/rVoXJa
 
+#### for modal reference
+
+- https://blog.theashishmaurya.me/creating-a-react-modal-with-react-custom-hooks-and-typescript
+
 #### To run
 
 - cd app

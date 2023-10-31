@@ -40,18 +40,20 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
           value={movie.title}
           onChange={handleTitleChange}
           placeholder="Title"
+          required
         />
         <input
           type="number"
           value={movie.year}
           onChange={handleYearChange}
           placeholder="Year"
+          required
         />
         <div>
           {!isLoading ? (
             <>
               <button type="submit" disabled={buttonDisabled}>
-                {initialMovie ? "Update" : "Add movie"}{" "}
+                {initialMovie ? "Update" : "Add movie"}
               </button>
             </>
           ) : (

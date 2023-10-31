@@ -6,7 +6,8 @@ import { Movie1 } from "../types";
 import { updateMovie, getMovieById } from "./apiService";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Modal1 from "./Checkmodal";
+import { useModal } from "./Checkmodal";
 const EditMovie: React.FC = () => {
   const navigate = useNavigate();
 
@@ -15,6 +16,7 @@ const EditMovie: React.FC = () => {
   const [dialog, setDialog] = useState(false);
   const [initialMovie, setInitialMovie] = useState<Movie1 | null>(null);
   const [error, setError] = useState(null);
+  const { isOpen, toggle } = useModal();
 
   useEffect(() => {
     async function getMovies() {
@@ -37,7 +39,8 @@ const EditMovie: React.FC = () => {
       if (id) {
         await updateMovie(id, movie);
         console.log("Movie updated:", movie);
-        setDialog(true);
+        // setDialog(true);
+        toggle();
       }
     } catch (error: any) {
       console.error("Error updating movie:", error.message);
@@ -58,6 +61,11 @@ const EditMovie: React.FC = () => {
       </main>
     );
   }
+  function handlecancel() {
+    setDialog(false);
+    toggle();
+    navigate("/");
+  }
   return (
     <Layout title={`Edit/ ${movieTitle}`}>
       <h2 className="edit-title">Edit movie</h2>
@@ -65,6 +73,12 @@ const EditMovie: React.FC = () => {
         <MovieForm onSubmit={handleMovieUpdated} initialMovie={initialMovie} />
       )}
       <Modal dialog={dialog} setDialog={setDialog} />
+      <Modal1 isOpen={isOpen} toggle={toggle}>
+        <p> movie update successfully</p>
+        <footer>
+          <button onClick={handlecancel}>ok </button>
+        </footer>
+      </Modal1>
       <button onClick={() => navigate("/")} className="home-add-btn">
         Back
       </button>
