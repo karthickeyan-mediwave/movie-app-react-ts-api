@@ -16,7 +16,7 @@ const Loading = () => {
           >
             <circle
               fill="none"
-              stroke="blue"
+              stroke="#fff"
               stroke-width="6"
               stroke-miterlimit="15"
               stroke-dasharray="14.2472,14.2472"
@@ -36,7 +36,7 @@ const Loading = () => {
             </circle>
             <circle
               fill="none"
-              stroke="blue"
+              stroke="#fff"
               stroke-width="1"
               stroke-miterlimit="10"
               stroke-dasharray="10,10"
@@ -54,7 +54,7 @@ const Loading = () => {
                 repeatCount="indefinite"
               />
             </circle>
-            <g fill="blue">
+            <g fill="#fff">
               <rect x="30" y="35" width="5" height="30">
                 <animateTransform
                   attributeName="transform"

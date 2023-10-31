@@ -28,6 +28,10 @@
 
 - https://www.codevertiser.com/react-loading-button
 
+#### for svg reference
+
+- https://codepen.io/nikhil8krishnan/pen/rVoXJa
+
 #### To run
 
 - cd app

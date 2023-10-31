@@ -6,21 +6,19 @@ import Layout from "./Layout";
 import { deleteMovie, getMovies } from "./apiService";
 import Modal from "./Modal";
 import Loading from "./loader/Loading";
-
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
-  const [movie, setmovie] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [dialog, setDialog] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoad, setIsLoad] = useState(false);
+  const [loadingMovieId, setLoadingMovieId] = useState<number | null>(null);
   useEffect(() => {
     async function getMoviesFromAPI() {
       setIsLoading(true);
-
       try {
         const response = await getMovies();
-        setmovie(response);
+        setMovies(response);
       } catch (error) {
         console.log(error);
       } finally {
@@ -29,30 +27,27 @@ const MovieList: React.FC = () => {
     }
     getMoviesFromAPI();
   }, [refresh]);
-
   const handleDelete = async (id: number) => {
-    setRefresh(true);
+    setLoadingMovieId(id);
+
     try {
       await deleteMovie(id);
       console.log("movie deleted:", id);
+      // setRefresh(true);
+
       setDialog(true);
     } catch (error: any) {
       console.error("Error deleting movie:", error.message);
     } finally {
-      setRefresh(false);
-      // setDialog(false);
-      setIsLoad(false);
+      setLoadingMovieId(null);
+      setRefresh(true);
     }
   };
-
   return (
     <Layout title="movies">
       <h1>Movies</h1>
       <button onClick={() => navigate("/add")} className="home-add-btn">
         <i className="fa fa-plus kkk"> </i>
-      </button>
-      <button disabled={isLoading} onClick={() => setRefresh((prev) => !prev)}>
-        refresh list
       </button>
       {isLoading ? (
         <>
@@ -60,44 +55,44 @@ const MovieList: React.FC = () => {
         </>
       ) : (
         <>
+          <button
+            disabled={isLoading}
+            onClick={() => setRefresh((prev) => !prev)}
+          >
+            refresh list
+          </button>
           <div className="grid">
-            {movie.map((mv) => (
-              <div key={mv.id}>
+            {movies.map((movie) => (
+              <div key={movie.id}>
                 <article>
-                  <h2>movie- {mv.title}</h2>
-                  <h3> Year: {mv.year}</h3>
-
+                  <h2>movie- {movie.title}</h2>
+                  <h3> Year: {movie.year}</h3>
                   <div className="btn-wrap">
                     <button className="edit-btn">
-                      <Link to={`/edit/${mv.id}`}>
+                      <Link to={`/edit/${movie.id}`}>
                         <i className="fa fa-edit"> </i>
                       </Link>
                     </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(mv.id)}
-                    >
-                      {isLoad ? (
-                        <>
-                          <Loading></Loading>
-                        </>
-                      ) : (
-                        <>
-                          <i className="fa fa-trash-o"></i>
-                        </>
-                      )}
-                    </button>
+
+                    {loadingMovieId === movie.id ? (
+                      <Loading></Loading>
+                    ) : (
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDelete(movie.id)}
+                      >
+                        <i className="fa fa-trash-o"></i>{" "}
+                      </button>
+                    )}
                   </div>
                 </article>
               </div>
             ))}
           </div>
-
           <Modal dialog={dialog} setDialog={setDialog} />
         </>
       )}
     </Layout>
   );
 };
-
 export default MovieList;

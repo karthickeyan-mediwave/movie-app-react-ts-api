@@ -14,6 +14,7 @@ const EditMovie: React.FC = () => {
   const [movieTitle, setMovieTitle] = useState("");
   const [dialog, setDialog] = useState(false);
   const [initialMovie, setInitialMovie] = useState<Movie1 | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getMovies() {
@@ -38,11 +39,25 @@ const EditMovie: React.FC = () => {
         console.log("Movie updated:", movie);
         setDialog(true);
       }
-    } catch (error) {
-      console.error("Error updating movie:", error);
+    } catch (error: any) {
+      console.error("Error updating movie:", error.message);
+      setError(error.message);
     }
   };
-
+  if (error) {
+    return (
+      <main>
+        <dialog open>
+          <article>
+            <h3>{error}</h3>
+            <footer>
+              <button onClick={() => navigate("/")}>ok</button>
+            </footer>
+          </article>
+        </dialog>
+      </main>
+    );
+  }
   return (
     <Layout title={`Edit/ ${movieTitle}`}>
       <h2 className="edit-title">Edit movie</h2>
