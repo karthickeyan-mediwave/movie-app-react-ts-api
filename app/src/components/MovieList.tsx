@@ -14,7 +14,6 @@ const MovieList: React.FC = () => {
   const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
-
   useEffect(() => {
     async function getMoviesFromAPI() {
       setIsLoading(true);
@@ -32,17 +31,15 @@ const MovieList: React.FC = () => {
   }, [refresh]);
 
   const handleDelete = async (id: number) => {
-    // setRefresh(true);
+    setRefresh(true);
     try {
       await deleteMovie(id);
-      // setIsLoad(true);
-
       console.log("movie deleted:", id);
       setDialog(true);
     } catch (error: any) {
       console.error("Error deleting movie:", error.message);
     } finally {
-      // setRefresh(false);
+      setRefresh(false);
       // setDialog(false);
       setIsLoad(false);
     }

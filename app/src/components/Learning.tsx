@@ -260,3 +260,23 @@ Launch demo modal
 // const isScrollbarVisible = () => {
 //   return document.body.scrollHeight > screen.height;
 // };
+// const index1 = movie.findIndex((movie) => movie.id === id);
+// const deletedMovie = movie.map((mv) => {
+//   if (id === mv.id) {
+//     setIsLoad(true);
+//     console.log(id);
+//   }
+// });
+// function del() {}
+// // setRefresh(true);
+// // setIsLoad(true);
+// const index1 = movie.findIndex((movie) => movie.id === id);
+// const index1 = movie.findIndex((movie) => {
+//   if (movie.id === id) {
+//   }
+//   setRefresh(true);
+// });
+
+// console.log(index);
+// setIsLoad(true);
+// setIsLoad(true);
