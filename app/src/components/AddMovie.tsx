@@ -21,20 +21,17 @@ const AddMovie: React.FC = () => {
     } catch (error: any) {
       console.error("Error creating movie:", error.message);
       setError(error.message);
+      toggle();
     }
   };
   if (error) {
     return (
-      <main>
-        <dialog open>
-          <article>
-            <h3>{error}</h3>
-            <footer>
-              <button onClick={() => navigate("/")}>ok</button>
-            </footer>
-          </article>
-        </dialog>
-      </main>
+      <Modal1 isOpen={isOpen} toggle={toggle}>
+        <p> {error}</p>
+        <footer>
+          <button onClick={handlecancel}>ok </button>
+        </footer>
+      </Modal1>
     );
   }
   function handlecancel() {
@@ -49,6 +46,7 @@ const AddMovie: React.FC = () => {
         <p> movie added successfully</p>
         <footer>
           <button onClick={handlecancel}>ok </button>
+          if (error) {<h3>{error}</h3>}
         </footer>
       </Modal1>
       <button onClick={() => navigate("/")} className="home-add-btn">
