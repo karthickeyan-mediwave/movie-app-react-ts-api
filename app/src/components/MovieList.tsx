@@ -35,7 +35,7 @@ const MovieList: React.FC = () => {
     // setRefresh(true);
     try {
       await deleteMovie(id);
-      setIsLoad(true);
+      // setIsLoad(true);
 
       console.log("movie deleted:", id);
       setDialog(true);
