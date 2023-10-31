@@ -43,22 +43,19 @@ const EditMovie: React.FC = () => {
         toggle();
       }
     } catch (error: any) {
-      console.error("Error updating movie:", error.message);
-      setError(error.message);
+      console.error("Error updating movie:", error.response.data.message);
+      setError(error.response.data.message);
+      toggle();
     }
   };
   if (error) {
     return (
-      <main>
-        <dialog open>
-          <article>
-            <h3>{error}</h3>
-            <footer>
-              <button onClick={() => navigate("/")}>ok</button>
-            </footer>
-          </article>
-        </dialog>
-      </main>
+      <Modal1 isOpen={isOpen} toggle={toggle}>
+        <p> {error}</p>
+        <footer>
+          <button onClick={handlecancel}>ok </button>
+        </footer>
+      </Modal1>
     );
   }
   function handlecancel() {

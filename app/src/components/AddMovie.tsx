@@ -19,8 +19,8 @@ const AddMovie: React.FC = () => {
       // setDialog(true);
       toggle();
     } catch (error: any) {
-      console.error("Error creating movie:", error.message);
-      setError(error.message);
+      console.error("Error creating movie:", error.response.data.message);
+      setError(error.response.data.message);
       toggle();
     }
   };
@@ -46,7 +46,6 @@ const AddMovie: React.FC = () => {
         <p> movie added successfully</p>
         <footer>
           <button onClick={handlecancel}>ok </button>
-          if (error) {<h3>{error}</h3>}
         </footer>
       </Modal1>
       <button onClick={() => navigate("/")} className="home-add-btn">
