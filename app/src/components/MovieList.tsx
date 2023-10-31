@@ -35,14 +35,11 @@ const MovieList: React.FC = () => {
     try {
       await deleteMovie(id);
       console.log("movie deleted:", id);
-      // setRefresh(true);
       toggle();
-      // setDialog(true);
     } catch (error: any) {
       console.error("Error deleting movie:", error.message);
     } finally {
       setLoadingMovieId(null);
-      // setRefresh(true);
     }
   };
   function handlecancel() {
