@@ -48,15 +48,17 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmit, initialMovie }) => {
           placeholder="Year"
         />
         <div>
-          <button type="submit" disabled={buttonDisabled}>
-            {!isLoading ? (
-              <> {initialMovie ? "Update" : "Add movie"}</>
-            ) : (
-              <>
-                <Loading></Loading>
-              </>
-            )}
-          </button>
+          {!isLoading ? (
+            <>
+              <button type="submit" disabled={buttonDisabled}>
+                {initialMovie ? "Update" : "Add movie"}{" "}
+              </button>
+            </>
+          ) : (
+            <>
+              <Loading></Loading>
+            </>
+          )}
         </div>
       </div>
     </form>
