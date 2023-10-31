@@ -3,14 +3,12 @@ import Layout from "./Layout";
 import MovieForm from "./MovieForm";
 import { Movie1 } from "../types";
 import { createMovie } from "./apiService";
-import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 import Modal1 from "./Checkmodal";
 import { useModal } from "./Checkmodal";
 const AddMovie: React.FC = () => {
   const navigate = useNavigate();
 
-  const [dialog, setDialog] = useState(false);
   const [error, setError] = useState(null);
   const { isOpen, toggle } = useModal();
 
@@ -40,7 +38,6 @@ const AddMovie: React.FC = () => {
     );
   }
   function handlecancel() {
-    setDialog(false);
     toggle();
     navigate("/");
   }
@@ -48,7 +45,6 @@ const AddMovie: React.FC = () => {
     <Layout title="movies/addmovies">
       <h2 className="add-title">Add movie</h2>
       <MovieForm onSubmit={handleMovieAdded} />
-      <Modal dialog={dialog} setDialog={setDialog} />
       <Modal1 isOpen={isOpen} toggle={toggle}>
         <p> movie added successfully</p>
         <footer>

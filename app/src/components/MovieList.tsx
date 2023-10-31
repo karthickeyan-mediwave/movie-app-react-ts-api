@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Movie } from "../types";
 import Layout from "./Layout";
 import { deleteMovie, getMovies } from "./apiService";
-import Modal from "./Modal";
 import Loading from "./loader/Loading";
 import { useModal } from "./Checkmodal";
 import Modal1 from "./Checkmodal";
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [dialog, setDialog] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMovieId, setLoadingMovieId] = useState<number | null>(null);
@@ -44,11 +42,10 @@ const MovieList: React.FC = () => {
       console.error("Error deleting movie:", error.message);
     } finally {
       setLoadingMovieId(null);
-      setRefresh(true);
+      // setRefresh(true);
     }
   };
   function handlecancel() {
-    setDialog(false);
     setRefresh(true);
     toggle();
     navigate("/");
@@ -100,7 +97,6 @@ const MovieList: React.FC = () => {
               </div>
             ))}
           </div>
-          <Modal dialog={dialog} setDialog={setDialog} />
           <Modal1 isOpen={isOpen} toggle={toggle}>
             <p> movie deleted successfully</p>
             <footer>
