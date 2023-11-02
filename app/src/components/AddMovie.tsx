@@ -24,16 +24,6 @@ const AddMovie: React.FC = () => {
       toggle();
     }
   };
-  if (error) {
-    return (
-      <Modal1 isOpen={isOpen} toggle={toggle}>
-        <p> {error}</p>
-        <footer>
-          <button onClick={handlecancel}>ok </button>
-        </footer>
-      </Modal1>
-    );
-  }
   function handlecancel() {
     toggle();
     navigate("/");
@@ -43,7 +33,15 @@ const AddMovie: React.FC = () => {
       <h2 className="add-title">Add movie</h2>
       <MovieForm onSubmit={handleMovieAdded} />
       <Modal1 isOpen={isOpen} toggle={toggle}>
-        <p> movie added successfully</p>
+        {error ? (
+          <>
+            <p> {error}</p>
+          </>
+        ) : (
+          <>
+            <p> movie added successfully</p>
+          </>
+        )}
         <footer>
           <button onClick={handlecancel}>ok </button>
         </footer>

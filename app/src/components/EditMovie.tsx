@@ -48,16 +48,6 @@ const EditMovie: React.FC = () => {
       toggle();
     }
   };
-  if (error) {
-    return (
-      <Modal1 isOpen={isOpen} toggle={toggle}>
-        <p> {error}</p>
-        <footer>
-          <button onClick={handlecancel}>ok </button>
-        </footer>
-      </Modal1>
-    );
-  }
   function handlecancel() {
     setDialog(false);
     toggle();
@@ -71,7 +61,15 @@ const EditMovie: React.FC = () => {
       )}
       <Modal dialog={dialog} setDialog={setDialog} />
       <Modal1 isOpen={isOpen} toggle={toggle}>
-        <p> movie update successfully</p>
+        {error ? (
+          <>
+            <p> {error}</p>
+          </>
+        ) : (
+          <>
+            <p> movie update successfully</p>
+          </>
+        )}
         <footer>
           <button onClick={handlecancel}>ok </button>
         </footer>

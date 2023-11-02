@@ -14,6 +14,7 @@ const MovieList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMovieId, setLoadingMovieId] = useState<number | null>(null);
   const { isOpen, toggle } = useModal();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getMoviesFromAPI() {
@@ -38,6 +39,7 @@ const MovieList: React.FC = () => {
       toggle();
     } catch (error: any) {
       console.error("Error deleting movie:", error.message);
+      setError(error.response.data.message);
     } finally {
       setLoadingMovieId(null);
     }
@@ -95,7 +97,15 @@ const MovieList: React.FC = () => {
             ))}
           </div>
           <Modal1 isOpen={isOpen} toggle={toggle}>
-            <p> movie deleted successfully</p>
+            {error ? (
+              <>
+                <p> {error}</p>
+              </>
+            ) : (
+              <>
+                <p> movie deleted successfully</p>
+              </>
+            )}
             <footer>
               <button onClick={handlecancel}>ok </button>
             </footer>
