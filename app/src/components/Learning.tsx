@@ -455,3 +455,11 @@ Launch demo modal
 // };
 
 // export default Modal;
+
+/////// NAVIGATE ALSO REDIRECT
+
+{
+  /* <button onClick={() => navigate(`/edit/${movie.id}`)} >
+<i className="fa fa-edit"> </i>
+</button> */
+}

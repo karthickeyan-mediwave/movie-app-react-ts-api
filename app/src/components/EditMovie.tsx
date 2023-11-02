@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import MovieForm from "./MovieForm";
-import Modal from "./Modal";
 import { Movie1 } from "../types";
 import { updateMovie, getMovieById } from "./apiService";
 import { useParams } from "react-router-dom";
@@ -13,7 +12,6 @@ const EditMovie: React.FC = () => {
 
   const { id } = useParams();
   const [movieTitle, setMovieTitle] = useState("");
-  const [dialog, setDialog] = useState(false);
   const [initialMovie, setInitialMovie] = useState<Movie1 | null>(null);
   const [error, setError] = useState(null);
   const { isOpen, toggle } = useModal();
@@ -49,7 +47,6 @@ const EditMovie: React.FC = () => {
     }
   };
   function handlecancel() {
-    setDialog(false);
     toggle();
     navigate("/");
   }
@@ -59,7 +56,6 @@ const EditMovie: React.FC = () => {
       {initialMovie && (
         <MovieForm onSubmit={handleMovieUpdated} initialMovie={initialMovie} />
       )}
-      <Modal dialog={dialog} setDialog={setDialog} />
       <Modal1 isOpen={isOpen} toggle={toggle}>
         {error ? (
           <>
