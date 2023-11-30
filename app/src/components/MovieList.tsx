@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Movie } from "../types";
+import { Items } from "../types";
 import Layout from "./Layout";
 import { deleteMovie, getMovies } from "./apiService";
 import Loading from "./loader/Loading";
@@ -9,7 +9,7 @@ import { useModal } from "./Checkmodal";
 import Modal1 from "./Checkmodal";
 const MovieList: React.FC = () => {
   const navigate = useNavigate();
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Items[]>([]);
   const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMovieId, setLoadingMovieId] = useState<number | null>(null);
@@ -21,6 +21,7 @@ const MovieList: React.FC = () => {
       setIsLoading(true);
       try {
         const response = await getMovies();
+
         setMovies(response);
       } catch (error) {
         console.log(error);
@@ -52,7 +53,7 @@ const MovieList: React.FC = () => {
 
   return (
     <Layout title="movies">
-      <h1>Movies</h1>
+      <h1>ecommerce</h1>
       <button onClick={() => navigate("/add")} className="home-add-btn">
         <i className="fa fa-plus kkk"> </i>
       </button>
@@ -72,8 +73,8 @@ const MovieList: React.FC = () => {
             {movies.map((movie) => (
               <div key={movie.id}>
                 <article>
-                  <h2>movie- {movie.title}</h2>
-                  <h3> Year: {movie.year}</h3>
+                  <h2>item_name- {movie.item_name}</h2>
+                  <h3> item_content: {movie.item_conent}</h3>
                   <div className="btn-wrap">
                     <button className="edit-btn">
                       <Link to={`/edit/${movie.id}`}>

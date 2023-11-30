@@ -1,16 +1,16 @@
 
 import axios from "axios";
-import { Movie1, Movie } from "../types";
+import { Movie1,Items } from "../types";
 import  { AxiosResponse } from "axios";
 
-const API_BASE_URL = "http://localhost:5476"; 
+const API_BASE_URL = "http://localhost:4000"; 
 
 const apiService = axios.create({
   baseURL: API_BASE_URL,
 });
 
-export const getMovies = async (): Promise<Movie[]> => {
-    const response: AxiosResponse<Movie[]> = await apiService.get("/movies");
+export const getMovies = async (): Promise<Items[]> => {
+    const response: AxiosResponse<Items[]> = await apiService.get("/items");
     return response.data;
   };
 
